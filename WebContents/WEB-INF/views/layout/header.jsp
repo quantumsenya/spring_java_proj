@@ -28,7 +28,7 @@
 		  	<a style="font-family: 'Lobster', cursive;" class="navbar-brand" href="${contextPath}">운영프로그램</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="${contex.tPath}/product/list">재고관리</a>
+			<a class="nav-link" href="${contextPath}/product/list">재고관리</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="${contextPath}/member/list">사용자 관리</a>

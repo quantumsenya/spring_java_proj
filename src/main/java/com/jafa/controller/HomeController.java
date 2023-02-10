@@ -13,4 +13,22 @@ public class HomeController {
 		model.addAttribute("welcome", "우리집");
 		return "index";
 	}
+	
+	@GetMapping("/notice")
+	public String notice(Model model) {
+		
+		return "/main/notice";
+	}
+	
+	@GetMapping("/ask")
+	public String ask(Model model) {
+		
+		return "/main/ask";
+	}
+	
+	@GetMapping("/service")
+	public String service(Model model) {
+		
+		return "/main/service";
+	}
 }
