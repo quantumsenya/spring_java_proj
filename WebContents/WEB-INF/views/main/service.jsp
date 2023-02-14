@@ -7,7 +7,9 @@
 		<h1>서비스 소개</h1>
 	</div>
 	<div class="jumbotron">
-		소개함~
+		소개함~ <br>
+		<br>
+		2023.02.06 프로젝트 제작 시작
 	</div>
 </div>
 
