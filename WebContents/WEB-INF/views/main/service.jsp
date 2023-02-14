@@ -3,9 +3,11 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<h1>서비스 안내</h1>
-	<div>
-		<spring:message code="main.greeting" arguments="${name},${welcome}"/>
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
+		<h1>서비스 소개</h1>
+	</div>
+	<div class="jumbotron">
+		소개함~
 	</div>
 </div>
 

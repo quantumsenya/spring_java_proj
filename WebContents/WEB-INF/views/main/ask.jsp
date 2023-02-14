@@ -5,7 +5,7 @@
 <div class="container">
 	<h1>문의사항</h1>
 	<div>
-		<spring:message code="main.greeting" arguments="${name},${welcome}"/>
+		
 	</div>
 </div>
 
