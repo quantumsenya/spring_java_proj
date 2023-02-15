@@ -1,5 +1,6 @@
 package com.jafa.domain;
 
+import java.sql.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -18,9 +19,11 @@ import lombok.ToString;
 public class ProductVO {
 	
 	private Long pid;
+	private String category;
 	private String pname;
 	private String ptag;
 	private int price;
 	private int count;
+	private Date pDate;
 
 }
