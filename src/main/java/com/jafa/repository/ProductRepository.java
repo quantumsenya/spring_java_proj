@@ -10,4 +10,6 @@ import com.jafa.domain.ProductVO;
 public interface ProductRepository {
 
 	List<ProductVO> productList();
+	
+	void add(ProductVO vo);
 }

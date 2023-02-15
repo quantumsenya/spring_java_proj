@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
@@ -10,7 +11,6 @@
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>글번호</th>
 					<th>제목</th>
 					<th>작성자</th>
 					<th>조회수</th>
@@ -26,7 +26,6 @@
 				<c:otherwise>
 					<c:forEach items="${notice}" var="n">
 						<tr class="text-center">
-							<td>${n.bno }</td>
 							<td class="text-left">
 								<a href="${n.bno}" class="title">${n.title}</a>
 							</td>
@@ -40,6 +39,9 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
+			<a class="btn btn-primary" href="${contextPath}/noticeForm">공지등록</a>
+		</sec:authorize>
 	</div>
 </div>
 
