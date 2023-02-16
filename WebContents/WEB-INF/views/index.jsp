@@ -21,6 +21,7 @@
 	</sec:authorize>
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
 		<a href="${contextPath}/member/admin">관리자페이지</a><br>
+		<a href="${contextPath}/askList">질문</a><br>
 	</sec:authorize>
 </div>
 
