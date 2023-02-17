@@ -22,6 +22,7 @@ public class ProductVO {
 	private String category;
 	private String pname;
 	private String ptag;
+	private String brand;
 	private int price;
 	private int count;
 	private Date pDate;

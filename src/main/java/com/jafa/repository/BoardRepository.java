@@ -20,4 +20,7 @@ public interface BoardRepository {
 	
 	// 질문 목록 읽어오기 (관리자)
 	List<BoardVO> askList();
+
+	// 공지 세부
+	BoardVO noticeDetail(BoardVO vo);
 }

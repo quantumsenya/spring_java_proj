@@ -78,4 +78,9 @@ public class HomeController {
 		boardService.notice(vo);
 		return "redirect:/notice";
 	}
+	
+	public String noticeDetail(BoardVO vo) {
+		boardService.noticeDetail(vo);
+		return "/askDetail";
+	}
 }

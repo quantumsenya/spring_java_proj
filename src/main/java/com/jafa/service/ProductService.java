@@ -20,4 +20,12 @@ public class ProductService {
 		return productRepository.productList();
 	}
 
+
+
+	public void add(ProductVO vo) {
+		
+		
+		productRepository.add(vo);
+	}
+
 }

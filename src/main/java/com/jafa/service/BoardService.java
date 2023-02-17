@@ -48,4 +48,8 @@ public class BoardService {
 		return boardRepository.askList();
 	}
 
+	public BoardVO noticeDetail(BoardVO vo) {
+		return boardRepository.noticeDetail(vo);
+	}
+
 }
