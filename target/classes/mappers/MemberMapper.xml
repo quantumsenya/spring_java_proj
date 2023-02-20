@@ -5,12 +5,12 @@
   
 <mapper namespace="com.jafa.repository.MemberRepository">
 	<insert id="save">
-		insert into member_sec02(mno, memberId, password, email)
-		values(member_sec02_seq.nextval,#{memberId}, #{password}, #{email})
+		insert into pro_member(mno, memberId, password, email)
+		values(pro_member_seq.nextval,#{memberId}, #{password}, #{email})
 	</insert>
 	
 	<select id="read" resultMap="memberMap">
-		SELECT * FROM member_sec02 WHERE memberId = #{memberId}
+		SELECT * FROM pro_member WHERE memberId = #{memberId}
 	</select>
 	<resultMap type="com.jafa.domain.MemberVO" id="memberMap">
 		<result property="mno" column="mno"/>
@@ -25,10 +25,10 @@
 			select="getAuthList"/>
 	</resultMap>
 	<select id="getAuthList" resultType="com.jafa.domain.AuthVO">
-		select * from member_auth2 where memberId=#{memberId} order by ordinal
+		select * from pro_auth where memberId=#{memberId} order by ordinal
 	</select>
 		<!-- 관라자페이지에서 회원목록 조회-->
 	<select id="memberList" resultMap="memberMap">
-		select * from member_sec02
+		select * from pro_member
 	</select>
 </mapper>

@@ -5,11 +5,11 @@
   
 <mapper namespace="com.jafa.repository.AuthRepository">
 	<insert id="save">
-		insert into member_auth2(memberId,memberType,ordinal)
+		insert into pro_auth(memberId,memberType,ordinal)
 		values(#{memberId}, #{memberType},#{ordinal})
 	</insert>
 	
 	<delete id="remove">
-		delete from member_auth2 where memberId=#{memberId}
+		delete from pro_auth where memberId=#{memberId}
 	</delete>
 </mapper>

@@ -17,7 +17,7 @@ import lombok.ToString;
 @Builder
 public class BoardVO {
 	
-	private int mno;
+	private int bno;
 	private String tag;
 	private String title;
 	private String content;
