@@ -6,7 +6,21 @@
 	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>상품 목록</h1>
 	</div>
-	<div>
+	<div class="row">
+		<div class="col-3">
+			<ul class="list-group">
+				<li class="list-group-item ${tag==p.tag ? 'list-group-primary' : '' }">
+					<a href="${contextPath}/product/list">전체</a>
+				</li>
+				<c:forEach items="${tagList }" var="t">
+					<li class="list-group-item ${tag==p.tag ? 'list-group-item-primary : ''}">
+						<a href="${contextPath}/board/list/${p.tag}">${p.tag}</a>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+	<div class="col-9">
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -45,6 +59,7 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+		<a href="${contextPath}/product/add" class="btn btn-primary">새 상품 추가</a>
 	</div>
 </div>
 

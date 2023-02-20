@@ -19,12 +19,11 @@ import lombok.ToString;
 public class ProductVO {
 	
 	private Long pid;
-	private String category;
+	private Category category;
+	private String tag;
 	private String pname;
-	private String ptag;
 	private String brand;
 	private int price;
 	private int count;
 	private Date pDate;
-
 }

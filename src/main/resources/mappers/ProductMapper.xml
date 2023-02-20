@@ -4,8 +4,52 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="com.jafa.repository.ProductRepository">
-	<select id="productList">
-		select * from tbl_product
+	
+	<resultMap type="category" id="cateMap">
+		<result property="cid" column="cid"/>
+		<result property="cname" column="cname"/>
+	</resultMap>
+	
+	<resultMap type="productVO" id="productMap">
+		<result property="pid" column="pid"/>
+		<result property="pname" column="pname"/>
+		<result property="brand" column="brand"/>
+		<result property="tag" column="tag"/>
+		<result property="price" column="price"/>
+		<result property="count" column="count"/>
+		<result property="pDate" column="pDate"/>
+		<collection property="category" resultMap="cateMap"/>
+	</resultMap>
+
+	<select id="productList" resultMap="productMap">
+		select
+			p.pid, p.tag, p.pname, p.brand, p.price, p.count, p.pDate,
+			c.cname, c.cid
+		from pro_product p
+		inner join pro_category c
+		on c.cid = b.cid
+		<if test="cid!=null">
+			where c.cid = #{cid}
+		</if>
 	</select>
+	
+	<insert id="add">
+		insert into pro_product(pid, cid, tag, pname, brand, price, count)
+		values(pid_prod_seq.nextval, #{category.cid}, #{tag}, #{pname}, #{brand}, #{price}, #{count})
+	</insert>
+	
+	
+	<select id="getCateList">
+		select * from pro_category
+	</select>
+	
+	<insert id="addCate">
+		insert into pro_category(cid,cname)
+		values(#{cid},#{cname})
+	</insert>
+	
+	<delete id="delCate">
+		delete from pro_cate where cid=#{cid}
+	</delete>
 	
 </mapper>
