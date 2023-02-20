@@ -16,6 +16,9 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
+import com.jafa.domain.Category;
+import com.jafa.domain.ProductVO;
+
 @Configuration
 @MapperScan("com.jafa.repository")
 @PropertySource(value = "classpath:database/oracle.properties")
@@ -47,6 +50,7 @@ public class RootConfig {
 		factory.setDataSource(dataSource());
 		factory.setMapperLocations(new PathMatchingResourcePatternResolver()
 									.getResources("classpath:mappers/**/*Mapper.xml"));
+		factory.setTypeAliases(ProductVO.class, Category.class);
 		return factory;
 	}
 	

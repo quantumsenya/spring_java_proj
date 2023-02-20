@@ -15,4 +15,8 @@ public interface ProductRepository {
 	void add(ProductVO vo);
 
 	List<Category> getCateList();
+	
+	void addCate(Category category);
+	
+	void delCate(String cid);
 }

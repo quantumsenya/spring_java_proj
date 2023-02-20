@@ -31,7 +31,7 @@ public class ProductController {
 		return productService.getCateList();
 	}
 	
-	@GetMapping(value = {"/list/{cate}", "/list"})
+	@GetMapping(value = {"/list/{cid}", "/list"})
 	public String list(Model model,@PathVariable(required = false) String cid) {
 		log.info("상품목록창");
 		List<ProductVO> productList = productService.productList(cid);
@@ -46,12 +46,13 @@ public class ProductController {
 		return "/product/detail";
 	}
 	
-	@GetMapping("add")
-	public void addForm() {
+	@GetMapping("/add")
+	public String addForm() {
 		log.info("상품추가 폼 이동");
+		return "/product/add";
 	}
 	
-	@PostMapping("add")
+	@PostMapping("/add")
 	public String add(ProductVO vo, RedirectAttributes rttr) {
 		log.info("상품 등록");
 		productService.add(vo);

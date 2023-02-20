@@ -26,11 +26,7 @@ public class HomeController {
 	BoardService boardService;
 	
 	@GetMapping("/")
-	public String home(Model model, Authentication auth) {
-		MemberDetail principal = (MemberDetail) auth.getPrincipal();
-		MemberVO vo = principal.getMemberVO();
-		model.addAttribute("name", vo.getMemberId());
-		model.addAttribute("welcome", "관리페이지");
+	public String home(Model model) {
 		return "index";
 	}
 	

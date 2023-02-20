@@ -39,7 +39,7 @@
 	</insert>
 	
 	
-	<select id="getCateList">
+	<select id="getCateList" resultMap="cateMap">
 		select * from pro_category
 	</select>
 	
