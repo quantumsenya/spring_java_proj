@@ -31,40 +31,43 @@ public class HomeController {
 	}
 	
 	@GetMapping("/notice")
-	public void noticeList(Model model, Authentication auth) {
+	public String noticeList(Model model, Authentication auth) {
 		List<BoardVO> noticeList = boardService.noticeList();
 		MemberDetail principal = (MemberDetail) auth.getPrincipal();
 		MemberVO vo = principal.getMemberVO();
 		model.addAttribute("memberInfo", vo);
 		model.addAttribute("notice", noticeList);
+		return "/main/notice";
 	}
 	
-	@PreAuthorize("isAuthenticated()")
+//	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/ask")
 	public String askForm(Authentication auth, Model model) {
 		log.info("질문 폼 이동 - 로그인한 사용자만 접근 가능");
 		MemberDetail principal = (MemberDetail) auth.getPrincipal();
 		MemberVO vo = principal.getMemberVO();
 		model.addAttribute("memberInfo", vo);
-		return "/askForm";
+		return "/main/askForm";
 	}
 	
 	@GetMapping("/service")
-	public void service(Model model) {
+	public String service(Model model) {
 		log.info("서비스 안내 이동");
+		return "/main/service";
 	}
 	
 	@PostMapping("/ask")
 	public String ask(BoardVO vo, RedirectAttributes rttr) {
 		log.info("질문 등록");
 		boardService.ask(vo);
-		return "redirect:/ask";
+		return "redirect:/main/ask";
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@GetMapping("noticeForm")
-	public void noticeForm() {
+	public String noticeForm() {
 		log.info("공지 작성");
+		return "/main/noticeForm";
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
@@ -72,11 +75,12 @@ public class HomeController {
 	public String postNotice(BoardVO vo, RedirectAttributes rttr) {
 		log.info("공지 등록");
 		boardService.notice(vo);
-		return "redirect:/notice";
+		return "redirect:/main/notice";
 	}
 	
+	@GetMapping("/notice/detail")
 	public String noticeDetail(BoardVO vo) {
 		boardService.noticeDetail(vo);
-		return "/askDetail";
+		return "/main/noticeDetail";
 	}
 }

@@ -9,7 +9,9 @@
 	<div class="jumbotron">
 		소개함~ <br>
 		<br>
-		2023.02.06 프로젝트 제작 시작
+		자바 기반 Spring 프로젝트 <br>
+		2023.02.06 프로젝트 제작 시작 <br>
+		Spring Tool Suite 3 사용 <br>
 	</div>
 </div>
 

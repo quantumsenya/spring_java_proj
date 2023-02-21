@@ -31,26 +31,28 @@
 			<a class="nav-link" href="${contextPath}/product/list">재고관리</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="${contextPath}/member/list">사용자 관리</a>
+			<a class="nav-link" href="${contextPath}/member/mypage">사용자 관리</a>
 		</li>
 	</ul>
 	<ul class="navbar-nav">
 		<!-- 드롭다운 메뉴 -->
-		<li class="nav-item dropdown">
+		<li class="nav-item">
 			<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 			  로그인 메뉴...
 		 	</a>
-			<div class="dropdown-menu">
+			<div class="dropdown-menu dropdown-menu-right">
 				<sec:authorize access="isAnonymous()"> <!-- 권한이 없는 경우(로그인을 하지 않은 사용자) -->
 					<a class="dropdown-item" href="${contextPath}/member/login">로그인</a>
 					<a class="dropdown-item" href="${contextPath}/member/join">회원가입</a>
 				</sec:authorize>
 					<sec:authorize access="isAuthenticated()"> <!-- 권한이 있는 경우(로그인한 사용자) -->
-					<form action="${contextPath}/member/logout" method="post">
-						<p><sec:authentication property="principal.username"/>님 로그인중</p>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-						<button class="btn btn-primary">로그아웃</button>
-					</form>
+						<a class="dropdown-item" href="${contextPath}/member/mypage">
+							<sec:authentication property="principal.username"/>님 로그인중
+						</a>
+						<form action="${contextPath}/member/logout" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+							<a class="dropdown-item btn btn-primary">로그아웃</a>
+						</form>
 					</sec:authorize>
 			</div>
 		</li>

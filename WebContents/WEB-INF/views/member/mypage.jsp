@@ -5,7 +5,7 @@
 <div class="container">
 	<h1>회원 페이지</h1>
 	<div>
-		${memberInfo }
+		${memberInfo}
 	</div>
 </div>
 

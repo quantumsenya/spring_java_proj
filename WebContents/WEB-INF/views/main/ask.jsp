@@ -6,11 +6,11 @@
 	<div class="jumbotron">
 		<h1>문의하기</h1>
 	</div>
-	<form action="${contextPath}/main/ask" method="post">
+	<form action="${contextPath}/ask" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<div class="form-group">
 			<label for="id">아이디</label>
-			<input type="text" name="id" class="form-control" placeholder="${auth.id}" disabled="disabled">
+			<input type="text" name="id" class="form-control" value="${memberInfo.id}" disabled="disabled">
 		</div>
 		<div class="form-group">
 			<label for="article">내용</label>
@@ -18,7 +18,7 @@
 		</div>
 		<div class="form-group">
 			<label for="email">이메일</label>
-			<input type="text" name="email" class="form-control" placeholder="example@eamil.com">
+			<input type="text" name="email" class="form-control" value="${memberInfo.email}" disabled="disabled">
 		</div>
 		<div class="form-group">
 			<label for="phone">전화번호</label>
