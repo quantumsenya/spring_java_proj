@@ -40,7 +40,7 @@ public class HomeController {
 		return "/main/notice";
 	}
 	
-//	@PreAuthorize("isAuthenticated()")
+	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/ask")
 	public String askForm(Authentication auth, Model model) {
 		log.info("질문 폼 이동 - 로그인한 사용자만 접근 가능");
