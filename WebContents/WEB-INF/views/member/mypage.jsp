@@ -18,27 +18,18 @@
 					<th>이메일</th>
 					<th>활성화 상태</th>
 				</tr>
-				<c:forEach items="${memberInfo}" var="info">
-					<tr>
-						<td>${info.mno}</td>
-						<td>${info.memberId}</td>
-						<td>${info.email }</td>
-						<td>
-							<c:if test="${info.enabled eq '0'}">비활성</c:if>
-							<c:if test="${info.enabled eq '1'}">활성</c:if>
-						</td>
-					</tr>
-				</c:forEach> 
+				<tr>
+					<td>${memberInfo.mno}</td>
+					<td>${memberInfo.memberId}</td>
+					<td>${memberInfo.email }</td>
+					<td>
+						<c:if test="${memberInfo.enabled eq false}">비활성</c:if>
+						<c:if test="${memberInfo.enabled eq true}">활성</c:if>
+					</td>
+				</tr>
 			</c:otherwise>
 		</c:choose>
 	</table>
-</div>
-
-<div class="container">
-	<h1>회원 페이지</h1>
-	<div>
-		${memberInfo}
-	</div>
 </div>
 
 
