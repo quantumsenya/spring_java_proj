@@ -7,12 +7,12 @@
 	
 	<insert id="ask">
 		insert into pro_board(bno, tag, title, content, writer) 
-		values(spring_board_seq.nextval,'ask', #{title}, #{content}, #{writer})
+		values(pro_board_seq.nextval,'ask', #{title}, #{content}, #{writer})
 	</insert>
 	
 	<insert id="notice">
 		insert into pro_board(bno, tag, title, content, writer) 
-		values(spring_board_seq.nextval,'notice', #{title}, #{content}, #{writer})
+		values(pro_board_seq.nextval,'notice', #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="noticeList">

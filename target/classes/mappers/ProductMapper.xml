@@ -25,7 +25,7 @@
 		select
 			p.pid, p.tag, p.pname, p.brand, p.price, p.count, p.pDate,
 			c.cname, c.cid
-		from pro_product p
+		from TBL_PRODUCT p
 		inner join pro_category c
 		on c.cid = b.cid
 		<if test="cid!=null">
@@ -34,8 +34,8 @@
 	</select>
 	
 	<insert id="add">
-		insert into pro_product(pid, cid, tag, pname, brand, price, count)
-		values(pid_prod_seq.nextval, #{category.cid}, #{tag}, #{pname}, #{brand}, #{price}, #{count})
+		insert into TBL_PRODUCT(pid, cid, tag, pname, brand, price, count)
+		values(TBL_PRODUCT_seq.nextval, #{category.cid}, #{tag}, #{pname}, #{brand}, #{price}, #{count})
 	</insert>
 	
 	
@@ -49,7 +49,7 @@
 	</insert>
 	
 	<delete id="delCate">
-		delete from pro_cate where cid=#{cid}
+		delete from pro_category where cid=#{cid}
 	</delete>
 	
 </mapper>
