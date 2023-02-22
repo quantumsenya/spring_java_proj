@@ -17,6 +17,7 @@
 					<th>아이디</th>
 					<th>이메일</th>
 					<th>활성화 상태</th>
+					<th>등급</th>
 				</tr>
 				<tr>
 					<td>${memberInfo.mno}</td>
@@ -26,6 +27,7 @@
 						<c:if test="${memberInfo.enabled eq false}">비활성</c:if>
 						<c:if test="${memberInfo.enabled eq true}">활성</c:if>
 					</td>
+					<td>${memberInfo.authList[0].memberType}</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
