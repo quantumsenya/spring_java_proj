@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.jafa.domain.BoardVO;
+import com.jafa.domain.Criteria;
 
 @Repository
 public interface BoardRepository {
@@ -16,11 +17,13 @@ public interface BoardRepository {
 	void notice(BoardVO vo);
 	
 	// 공지 목록 읽어오기
-	List<BoardVO> noticeList();
+	List<BoardVO> noticeList(Criteria criteria);
 	
 	// 질문 목록 읽어오기 (관리자)
 	List<BoardVO> askList();
 
 	// 공지 세부
 	BoardVO noticeDetail(BoardVO vo);
+
+	int getTotalCount(Criteria criteria);
 }

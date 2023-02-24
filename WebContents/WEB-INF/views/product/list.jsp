@@ -2,25 +2,40 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 
+<input type="hidden" value="${category}" class="category">
 <div class="container">
 	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>상품 목록</h1>
 	</div>
-	<div class="row">
-		<div class="col-3">
-			<ul class="list-group">
-				<li class="list-group-item ${tag==p.tag ? 'list-group-primary' : '' }">
-					<a href="${contextPath}/product/list">전체</a>
-				</li>
-				<c:forEach items="${tagList }" var="t">
-					<li class="list-group-item ${tag==p.tag ? 'list-group-item-primary : ''}">
-						<a href="${contextPath}/board/list/${p.tag}">${p.tag}</a>
-					</li>
-				</c:forEach>
-			</ul>
+	
+	<form class="form-inline searchForm">
+		<div class="form-group">
+			<select class="form-control category">
+				<option value="">====전체====</option>
+				<option value="man" ${category=='man' ? 'selected':''}>남성</option>
+				<option value="woman" ${category=='woman' ? 'selected':''}>여성</option>
+				<option value="child" ${category=='child' ? 'selected':''}>아동</option>
+				<option value="ACC" ${category=='ACC' ? 'selected':''}>ACC</option>
+				<option value="sports" ${category=='sports' ? 'selected':''}>스포츠</option>
+				<option value="electronics" ${category=='electronics' ? 'selected':''}>가전</option>
+				<option value="office" ${category=='office' ? 'selected':''}>문구</option>
+				<option value="health" ${category=='health' ? 'selected':''}>헬스</option>
+				<option value="etc" ${category=='etc' ? 'selected':''}>기타</option>
+			</select>
 		</div>
-	</div>
-	<div class="col-9">
+		<div class="form-group">
+		<select class="form-control" name="type">
+			<option value="N" >이름</option>
+			<option value="I" ${cri.type=='I' ? 'selected':''}>ID</option>
+			<option value="B" ${cri.type=='B' ? 'selected':''}>브랜드</option>
+		</select>
+		</div>
+		<div class="form-group">
+			<input type="search" class="form-control" name="keyword" value="${cri.keyword}">
+		</div>
+		<button type="button" class="btn btn-primary">검색</button>
+	</form>
+	
 		<table class="table table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -59,6 +74,25 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+			
+		<ul class="pagination">
+			<c:if test="${p.prev}">
+			<li class="page-item">
+				<a class="page-link" href="${p.startPage-1}">이전페이지</a>
+			</li>
+			</c:if>
+			<c:forEach begin="${p.startPage}" end="${p.endPage }" var="pageNum">
+			<li class="page-item ${cri.page == pageNum ? 'active':''}">
+				<a class="page-link" href="${pageNum }">${pageNum }</a>
+			</li>
+			</c:forEach>
+			<c:if test="${p.next}">
+			<li class="page-item">
+				<a class="page-link" href="${p.endPage+1 }">다음페이지</a>
+			</li>
+			</c:if>
+		</ul>
+		
 		<a href="${contextPath}/product/add" class="btn btn-primary">새 상품 추가</a>
 	</div>
 </div>

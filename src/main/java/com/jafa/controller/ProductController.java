@@ -1,7 +1,5 @@
 package com.jafa.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.jafa.domain.Criteria;
+import com.jafa.domain.Pagination;
 import com.jafa.domain.ProductVO;
-import com.jafa.domain.Category;
 import com.jafa.service.ProductService;
 
 import lombok.extern.log4j.Log4j;
@@ -26,16 +25,12 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
-	@ModelAttribute("cateList")
-	public List<Category> cateList() {
-		return productService.getCateList();
-	}
-	
-	@GetMapping(value = {"/list/{cid}", "/list"})
-	public String list(Model model,@PathVariable(required = false) String cid) {
-		log.info("상품목록창");
-		List<ProductVO> productList = productService.productList(cid);
-		model.addAttribute("product", productList);
+	@RequestMapping(value = {"/list", "/list/{category}"})
+	public String list(Model model,@PathVariable(required = false) String category,
+						@ModelAttribute("cri") Criteria criteria) {
+		log.info(criteria);
+		model.addAttribute("product", productService.productList(criteria));
+		model.addAttribute("p", new Pagination(criteria, productService.getTotalCount(criteria)));
 		return "/product/list";
 	}
 	

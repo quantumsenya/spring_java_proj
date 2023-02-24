@@ -15,12 +15,16 @@
 		values(pro_board_seq.nextval,'notice', #{title}, #{content}, #{writer})
 	</insert>
 	
-	<select id="noticeList">
-		select * from pro_board where tag='notice' order by mno desc
+	<select id="noticeList" resultType="com.jafa.domain.BoardVO">
+		select * from pro_board where tag='notice' order by bno desc
 	</select>
 	
-	<select id="askList">
-		select * from pro_board where tag='ask' order by mno desc
-	</select>	
+	<select id="askList" resultType="com.jafa.domain.BoardVO">
+		select * from pro_board where tag='ask' order by bno desc
+	</select>
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from pro_board
+	</select>
 	
 </mapper>

@@ -5,51 +5,52 @@
   
 <mapper namespace="com.jafa.repository.ProductRepository">
 	
-	<resultMap type="category" id="cateMap">
-		<result property="cid" column="cid"/>
-		<result property="cname" column="cname"/>
-	</resultMap>
+	<sql id="condition">
+		<trim prefix="and">
+			<choose>
+					<when test="type=='N'.toString()">
+						pname like '%'||#{keyword}||'%'	
+					</when>
+					<when test="type=='I'.toString()">
+						pid like '%'||#{keyword}||'%'	
+					</when>
+					<when test="type=='B'.toString()">
+						brand like '%'||#{keyword}||'%'	
+					</when>
+			</choose>
+		</trim>
+		<if test="category!=null and category!=''">
+			and category = #{category}
+		</if>	
+	</sql>
 	
-	<resultMap type="productVO" id="productMap">
-		<result property="pid" column="pid"/>
-		<result property="pname" column="pname"/>
-		<result property="brand" column="brand"/>
-		<result property="tag" column="tag"/>
-		<result property="price" column="price"/>
-		<result property="count" column="count"/>
-		<result property="pDate" column="pDate"/>
-		<collection property="category" resultMap="cateMap"/>
-	</resultMap>
-
-	<select id="productList" resultMap="productMap">
-		select
-			p.pid, p.tag, p.pname, p.brand, p.price, p.count, p.pDate,
-			c.cname, c.cid
-		from TBL_PRODUCT p
-		inner join pro_category c
-		on c.cid = b.cid
-		<if test="cid!=null">
-			where c.cid = #{cid}
-		</if>
+	<select id="productList" resultType="productVO">
+		<![CDATA[
+		select 
+			RN, PID, CATEGORY, PNAME, BRAND, PRICE, COUNT, PDATE
+		from
+		(SELECT 
+			/*+ index_desc(TBL_PRODUCT PK_TBL_PRODUCT) */ 
+			rownum RN, PID, CATEGORY, PNAME, BRAND, PRICE, COUNT, PDATE
+		from TBL_PRODUCT where rownum <= #{maxRow}
+		]]>
+		<include refid="condition"/>
+		<![CDATA[
+		) where rn > #{minRow}
+		]]>
+	</select>
+	
+	
+	<select id="getTotalCount" resultType="int">
+		select count(*) from TBL_PRODUCT
+		<where>
+			<include refid="condition"/>
+		</where>
 	</select>
 	
 	<insert id="add">
-		insert into TBL_PRODUCT(pid, cid, tag, pname, brand, price, count)
-		values(TBL_PRODUCT_seq.nextval, #{category.cid}, #{tag}, #{pname}, #{brand}, #{price}, #{count})
+		insert into TBL_PRODUCT(PID, CATEGORY, PNAME, BRAND, PRICE, COUNT)
+		values(TBL_PRODUCT_SEQ.nextval,#{pid}, #{category}, #{pname}, #{brand}, #{price}, #{count})
 	</insert>
-	
-	
-	<select id="getCateList" resultMap="cateMap">
-		select * from pro_category
-	</select>
-	
-	<insert id="addCate">
-		insert into pro_category(cid,cname)
-		values(#{cid},#{cname})
-	</insert>
-	
-	<delete id="delCate">
-		delete from pro_category where cid=#{cid}
-	</delete>
 	
 </mapper>

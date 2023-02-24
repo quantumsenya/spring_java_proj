@@ -17,7 +17,6 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.jafa.domain.BoardVO;
-import com.jafa.domain.Category;
 import com.jafa.domain.MemberVO;
 import com.jafa.domain.ProductVO;
 
@@ -52,7 +51,7 @@ public class RootConfig {
 		factory.setDataSource(dataSource());
 		factory.setMapperLocations(new PathMatchingResourcePatternResolver()
 									.getResources("classpath:mappers/**/*Mapper.xml"));
-		factory.setTypeAliases(ProductVO.class, Category.class, BoardVO.class, MemberVO.class, ProductVO.class);
+		factory.setTypeAliases(ProductVO.class, BoardVO.class, MemberVO.class);
 		return factory;
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jafa.domain.BoardVO;
+import com.jafa.domain.Criteria;
 import com.jafa.repository.BoardRepository;
 
 @Service
@@ -39,8 +40,8 @@ public class BoardService {
 	}
 	
 	// 공지 조회
-	public List<BoardVO> noticeList() {
-		return boardRepository.noticeList();
+	public List<BoardVO> noticeList(Criteria criteria) {
+		return boardRepository.noticeList(criteria);
 	}
 	
 	// 질문 조회
@@ -50,6 +51,10 @@ public class BoardService {
 
 	public BoardVO noticeDetail(BoardVO vo) {
 		return boardRepository.noticeDetail(vo);
+	}
+
+	public int getTotalCount(Criteria criteria) {
+		return boardRepository.getTotalCount(criteria);
 	}
 
 }

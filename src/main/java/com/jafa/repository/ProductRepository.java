@@ -4,19 +4,16 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.jafa.domain.Criteria;
 import com.jafa.domain.ProductVO;
-import com.jafa.domain.Category;
 
 @Repository
 public interface ProductRepository {
 
-	List<ProductVO> productList(String id);
+	List<ProductVO> productList(Criteria criteria);
 	
 	void add(ProductVO vo);
 
-	List<Category> getCateList();
-	
-	void addCate(Category category);
-	
-	void delCate(String cid);
+	int getTotalCount(Criteria criteria);
+
 }
