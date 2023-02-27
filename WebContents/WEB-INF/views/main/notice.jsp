@@ -41,24 +41,25 @@
 			</c:choose>
 		</table>
 		
-		<ul class="pagination">
-			<c:if test="${p.prev}">
-			<li class="page-item">
-				<a class="page-link" href="${p.startPage-1}">이전페이지</a>
-			</li>
-			</c:if>
-			<c:forEach begin="${p.startPage}" end="${p.endPage }" var="pageNum">
-			<li class="page-item ${cri.page == pageNum ? 'active':''}">
-				<a class="page-link" href="${pageNum }">${pageNum }</a>
-			</li>
-			</c:forEach>
-			<c:if test="${p.next}">
-			<li class="page-item">
-				<a class="page-link" href="${p.endPage+1 }">다음페이지</a>
-			</li>
-			</c:if>
-		</ul>
-		
+		<div class="text-center">
+			<ul class="pagination">
+				<c:if test="${p.prev}">
+				<li class="page-item">
+					<a class="page-link" href="${p.startPage-1}">이전페이지</a>
+				</li>
+				</c:if>
+				<c:forEach begin="${p.startPage}" end="${p.endPage }" var="pageNum">
+				<li class="page-item ${cri.page == pageNum ? 'active':''}">
+					<a class="page-link" href="${pageNum }">${pageNum }</a>
+				</li>
+				</c:forEach>
+				<c:if test="${p.next}">
+				<li class="page-item">
+					<a class="page-link" href="${p.endPage+1 }">다음페이지</a>
+				</li>
+				</c:if>
+			</ul>
+		</div>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
 			<a class="btn btn-primary" href="${contextPath}/noticeForm">공지등록</a>
 		</sec:authorize>

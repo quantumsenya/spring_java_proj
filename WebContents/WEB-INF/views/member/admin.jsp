@@ -10,7 +10,7 @@
 	<div class="container" style="margin-top:30px">
 		<div class="row">
 			<div class="col-sm-8">
-				<form action="${contextPath}/member/upadteMemberType" method="post">
+				<form action="${contextPath}/member/updateMemberType" method="post">
 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 				<table class="table">
 					<tr>
@@ -41,13 +41,13 @@
 					</c:forEach>
 					
 				</table>
-				<button>전송</button>
+				<button class="btn btn-primary">전송</button>
 				</form>
 			</div>
 			<div class="col-sm-4">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<h5 class="card-title text-center">Log In</h5>
+						<h5 class="card-title text-center">관리메뉴</h5>
 					</div>
 					<hr>
 						<div class="form-label-group text-center">
