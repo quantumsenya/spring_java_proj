@@ -20,6 +20,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.csrf.CsrfFilter;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 import lombok.extern.log4j.Log4j;
 
@@ -62,6 +64,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //				.access("hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')")
 //			.antMatchers("/member/admin")
 //				.access("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')");
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
+		filter.setEncoding("UTF-8");
+		filter.setForceEncoding(true);
+		
+		http.addFilterBefore(filter, CsrfFilter.class);
+		
         http.formLogin() // /login으로 요청하면 스프링시큐리티가 제공하는 로그인 페이지로 이동
 			.loginPage("/member/login") // 로그인 페이지 
 			.loginProcessingUrl("/member/login") // 로그인 처리 

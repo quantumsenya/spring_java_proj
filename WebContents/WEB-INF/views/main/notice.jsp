@@ -10,8 +10,8 @@
 	</div>
 	<div>
 		<table class="table table-striped">
-			<thead class="thead-dark">
-				<tr>
+			<thead class="thead-dark ">
+				<tr class="text-center">
 					<th>제목</th>
 					<th>작성자</th>
 					<th>조회수</th>
@@ -28,7 +28,7 @@
 					<c:forEach items="${notice}" var="n">
 						<tr class="text-center">
 							<td class="text-left">
-								<a href="${n.bno}" class="title">${n.title}</a>
+								<a href="${contextPath}/noticeDetail?bno=${n.bno}" class="title">${n.title}</a>
 							</td>
 							<td>${n.writer}</td>
 							<td>${n.views}</td>

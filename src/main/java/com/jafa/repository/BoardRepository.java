@@ -23,7 +23,11 @@ public interface BoardRepository {
 	List<BoardVO> askList();
 
 	// 공지 세부
-	BoardVO noticeDetail(BoardVO vo);
+	BoardVO noticeDetail(Long bno);
 
 	int getTotalCount(Criteria criteria);
+	
+	int getNoticeTotalCount(Criteria criteria);
+	
+	int getAskTotalCount(Criteria criteria);
 }

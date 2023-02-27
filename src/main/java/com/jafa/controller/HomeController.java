@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jafa.domain.BoardVO;
@@ -34,12 +36,22 @@ public class HomeController {
 	
 	@RequestMapping(value = {"/notice"})
 	public String noticeList(@ModelAttribute("cri") Criteria criteria, Model model, Authentication auth) {
-		MemberDetail principal = (MemberDetail) auth.getPrincipal();
-		MemberVO vo = principal.getMemberVO();
-		model.addAttribute("memberInfo", vo);
+		if(auth!=null && auth.isAuthenticated()) {
+			MemberDetail principal = (MemberDetail)  auth.getPrincipal();
+			MemberVO vo = principal.getMemberVO();
+			model.addAttribute("memberInfo", vo);
+		}
 		model.addAttribute("notice", boardService.noticeList(criteria));
-		model.addAttribute("p", new Pagination(criteria, boardService.getTotalCount(criteria)));
+		model.addAttribute("p", new Pagination(criteria, boardService.getNoticeTotalCount(criteria)));
 		return "/main/notice";
+	}
+	
+	@RequestMapping("/noticeDetail")
+	public ModelAndView detail(@RequestParam("bno") Long bno) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/main/noticeDetail");
+		mav.addObject("board", boardService.noticeDetail(bno));
+		return mav;
 	}
 	
 	@PreAuthorize("isAuthenticated()")
@@ -67,8 +79,11 @@ public class HomeController {
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@GetMapping("noticeForm")
-	public String noticeForm() {
+	public String noticeForm(Authentication auth, Model model) {
 		log.info("공지 작성");
+		MemberDetail principal = (MemberDetail) auth.getPrincipal();
+		MemberVO vo = principal.getMemberVO();
+		model.addAttribute("memberInfo", vo);
 		return "/main/noticeForm";
 	}
 	
@@ -77,12 +92,14 @@ public class HomeController {
 	public String postNotice(BoardVO vo, RedirectAttributes rttr) {
 		log.info("공지 등록");
 		boardService.notice(vo);
-		return "redirect:/main/notice";
+		return "redirect:/notice";
 	}
 	
 	@GetMapping("/notice/detail")
-	public String noticeDetail(BoardVO vo) {
-		boardService.noticeDetail(vo);
+	public String noticeDetail(Long bno) {
+		boardService.noticeDetail(bno);
 		return "/main/noticeDetail";
 	}
+	
+	
 }

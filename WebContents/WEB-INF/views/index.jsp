@@ -15,7 +15,7 @@
 			<button class="btn btn-primary">로그아웃</button>
 		</form> 
 	</sec:authorize>
-	<a href="${contextPath}/member/all">모든 사용자 접근 가능</a><br>
+<%-- 	<a href="${contextPath}/member/all">모든 사용자 접근 가능</a><br> --%>
 	<sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">
 		<a href="${contextPath}/member/mypage">나의정보보기</a><br>
 	</sec:authorize>

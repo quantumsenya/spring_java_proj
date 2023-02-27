@@ -25,5 +25,5 @@ public class ProductVO {
 	private String brand;
 	private int price;
 	private int count;
-	private Date pDate;
+	private Date pdate;
 }

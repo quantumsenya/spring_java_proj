@@ -12,11 +12,15 @@
 	
 	<insert id="notice">
 		insert into pro_board(bno, tag, title, content, writer) 
-		values(pro_board_seq.nextval,'notice', #{title}, #{content}, #{writer})
+		values(pro_board_seq.nextval,#{tag}, #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="noticeList" resultType="com.jafa.domain.BoardVO">
 		select * from pro_board where tag='notice' order by bno desc
+	</select>
+	
+	<select id="noticeDetail" resultType="com.jafa.domain.BoardVO">
+		select * from pro_board where bno=#{bno}
 	</select>
 	
 	<select id="askList" resultType="com.jafa.domain.BoardVO">
@@ -25,6 +29,14 @@
 	
 	<select id="getTotalCount" resultType="int">
 		select count(*) from pro_board
+	</select>
+	
+	<select id="getNoticeTotalCount" resultType="int">
+		select count(*) from pro_board where tag='notice'
+	</select>
+	
+	<select id="getAskTotalCount" resultType="int">
+		select count(*) from pro_board where tag='ask'
 	</select>
 	
 </mapper>

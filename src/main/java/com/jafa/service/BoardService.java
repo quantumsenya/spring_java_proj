@@ -49,12 +49,20 @@ public class BoardService {
 		return boardRepository.askList();
 	}
 
-	public BoardVO noticeDetail(BoardVO vo) {
-		return boardRepository.noticeDetail(vo);
+	public BoardVO noticeDetail(Long bno) {
+		return boardRepository.noticeDetail(bno);
 	}
 
 	public int getTotalCount(Criteria criteria) {
 		return boardRepository.getTotalCount(criteria);
+	}
+	
+	public int getNoticeTotalCount(Criteria criteria) {
+		return boardRepository.getNoticeTotalCount(criteria);
+	}
+	
+	public int getAsktotalCount(Criteria criteria) {
+		return boardRepository.getAskTotalCount(criteria);
 	}
 
 }

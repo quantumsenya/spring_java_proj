@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -33,6 +34,12 @@
 		<li class="nav-item">
 			<a class="nav-link" href="${contextPath}/member/mypage">사용자 관리</a>
 		</li>
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
+			<li class="nav-item">
+				<a class="nav-link" href="${contextPath}/member/admin">관리자 모드</a>
+			</li>
+		</sec:authorize>
+		
 	</ul>
 	<ul class="navbar-nav">
 		<!-- 드롭다운 메뉴 -->

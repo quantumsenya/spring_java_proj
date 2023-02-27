@@ -22,6 +22,6 @@ public class MemberAccessDeniedHanlder implements AccessDeniedHandler{
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		log.info("AccessDeniedHandler 동작 ");
-		response.sendRedirect(request.getContextPath()+"/member/accessError");
+		response.sendRedirect(request.getContextPath()+"/accessError");
 	}
 }

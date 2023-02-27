@@ -67,7 +67,7 @@
 							<td>${p.price}</td>
 							<td>${p.count}</td>
 							<td>
-								<fmt:formatDate value="${p.pDate}" pattern="yyyy년 MM월 dd일"/>
+								<fmt:formatDate value="${p.pdate}" pattern="yyyy년 MM월 dd일"/>
 							</td>
 						</tr>
 					</c:forEach>

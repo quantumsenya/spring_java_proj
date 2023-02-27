@@ -24,7 +24,7 @@
 		</if>	
 	</sql>
 	
-	<select id="productList" resultType="productVO">
+	<select id="productList" resultType="com.jafa.domain.ProductVO">
 		<![CDATA[
 		select 
 			RN, PID, CATEGORY, PNAME, BRAND, PRICE, COUNT, PDATE
@@ -50,7 +50,7 @@
 	
 	<insert id="add">
 		insert into TBL_PRODUCT(PID, CATEGORY, PNAME, BRAND, PRICE, COUNT)
-		values(TBL_PRODUCT_SEQ.nextval,#{pid}, #{category}, #{pname}, #{brand}, #{price}, #{count})
+		values(TBL_PRODUCT_SEQ.nextval, #{category}, #{pname}, #{brand}, #{price}, #{count})
 	</insert>
 	
 </mapper>
