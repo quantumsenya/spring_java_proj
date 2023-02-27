@@ -27,13 +27,13 @@
 				<c:otherwise>
 					<c:forEach items="${notice}" var="n">
 						<tr class="text-center">
-							<td class="text-left">
+							<td>
 								<a href="${contextPath}/noticeDetail?bno=${n.bno}" class="title">${n.title}</a>
 							</td>
 							<td>${n.writer}</td>
 							<td>${n.views}</td>
 							<td>
-								<fmt:formatDate value="${n.writeDate}" pattern="MM-dd hh:mm"/>
+								<fmt:formatDate value="${n.writeDate}" pattern="yyyy년 MM월 dd일"/>
 							</td>
 						</tr>
 					</c:forEach>
