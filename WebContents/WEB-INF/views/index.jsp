@@ -17,10 +17,10 @@
 	</sec:authorize>
 <%-- 	<a href="${contextPath}/member/all">모든 사용자 접근 가능</a><br> --%>
 	<sec:authorize access="hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')">
-		<a href="${contextPath}/member/mypage">나의정보보기</a><br>
+		<a href="${contextPath}/member/mypage">나의 정보 보기</a><br>
 	</sec:authorize>
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
-		<a href="${contextPath}/member/admin">관리자페이지</a><br>
+		<a href="${contextPath}/member/admin">관리자 페이지</a><br>
 		<a href="${contextPath}/askList">질문</a><br>
 	</sec:authorize>
 </div>
