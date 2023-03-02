@@ -97,6 +97,7 @@ public class MemberController {
 		MemberDetail principal = (MemberDetail) auth.getPrincipal();
 		MemberVO memberVO = principal.getMemberVO();
 		model.addAttribute("memberInfo", memberVO);
+		model.addAttribute("mType", MemberType.values());
 		return "member/mypage";
 	}
 

@@ -12,10 +12,10 @@
 		${board.content}
 		<hr>
 		<div class="text-center">
-			<h4>
+			<h6>
 				<span class="badge badge-pill badge-primary">${board.writer}</span>
 				<span class="badge badge-pill badge-secondary">${board.writeDate}</span>
-			</h4>
+			</h6>
 		</div>
 	</div>
 	<div>

@@ -27,7 +27,7 @@
 						<c:if test="${memberInfo.enabled eq false}">비활성</c:if>
 						<c:if test="${memberInfo.enabled eq true}">활성</c:if>
 					</td>
-					<td>${memberInfo.authList[0].memberType}</td>
+					<td>${memberInfo.authList[0].memberType.name}</td>
 				</tr>
 			</c:otherwise>
 		</c:choose>
