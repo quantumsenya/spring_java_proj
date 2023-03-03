@@ -57,7 +57,6 @@ public class HomeController {
 	@PreAuthorize("isAuthenticated()")
 	@GetMapping("/ask")
 	public String askForm(Authentication auth, Model model) {
-		log.info("질문 폼 이동 - 로그인한 사용자만 접근 가능");
 		MemberDetail principal = (MemberDetail) auth.getPrincipal();
 		MemberVO vo = principal.getMemberVO();
 		model.addAttribute("memberInfo", vo);
@@ -100,7 +99,6 @@ public class HomeController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@GetMapping("noticeForm")
 	public String noticeForm(Authentication auth, Model model) {
-		log.info("공지 작성");
 		MemberDetail principal = (MemberDetail) auth.getPrincipal();
 		MemberVO vo = principal.getMemberVO();
 		model.addAttribute("memberInfo", vo);
@@ -110,7 +108,6 @@ public class HomeController {
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@PostMapping("/notice")
 	public String postNotice(BoardVO vo, RedirectAttributes rttr) {
-		log.info("공지 등록");
 		boardService.notice(vo);
 		return "redirect:/notice";
 	}
