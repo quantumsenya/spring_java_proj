@@ -39,7 +39,9 @@
 				<a class="nav-link" href="${contextPath}/member/admin">관리자 모드</a>
 			</li>
 		</sec:authorize>
-		
+		<li class="nav-item">
+			<a class="nav-link" href="${contextPath}/notice">공지사항</a>
+		</li>
 	</ul>
 	<ul class="navbar-nav">
 		<!-- 드롭다운 메뉴 -->

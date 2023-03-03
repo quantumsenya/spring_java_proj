@@ -1,6 +1,6 @@
 package com.jafa.domain;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +23,5 @@ public class BoardVO {
 	private String content;
 	private String writer;
 	private int views;
-	private Date writeDate;
+	private Timestamp writeDate;
 }

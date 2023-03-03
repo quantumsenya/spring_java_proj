@@ -41,10 +41,11 @@
 				<tr class="text-center">
 					<th>상품 번호</th>
 					<th>상품 분류</th>
-					<th>상품 이름</th>
 					<th>상품 제조사</th>
+					<th>상품 이름</th>
 					<th>상품 가격</th>
 					<th>상품 재고</th>
+					<th>재고 보유금액</th>
 					<th>상품 추가일자</th>
 				</tr>
 			</thead>
@@ -73,14 +74,21 @@
 										<c:otherwise>기타</c:otherwise>
 									</c:choose>
 								</td>
+								<td>${p.brand}</td>
 								<td>
 									<a href="${contextPath}/product/detail?pid=${p.pid}" class="pname">${p.pname}</a>
 								</td>
-								<td>${p.brand}</td>
-								<td>${p.price} 원</td>
-								<td>${p.count} 개</td>
 								<td>
-									<fmt:formatDate value="${p.pdate}" pattern="yyyy년 MM월 dd일"/>
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.price}"/> 원
+								</td>
+								<td>
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.count}"/> 개
+								</td>
+								<td>
+									<fmt:formatNumber type="number" maxFractionDigits="3" value="${p.count * p.price}"/> 원
+								</td>
+								<td>
+									<fmt:formatDate value="${p.pdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 								</td>
 							</tr>
 						</c:forEach>
@@ -88,24 +96,69 @@
 				</c:choose>
 			</tbody>
 		</table>
-			
-		<ul class="pagination">
-			<c:if test="${p.prev}">
-			<li class="page-item">
-				<a class="page-link" href="${p.startPage-1}">이전페이지</a>
-			</li>
-			</c:if>
-			<c:forEach begin="${p.startPage}" end="${p.endPage }" var="pageNum">
-			<li class="page-item ${cri.page == pageNum ? 'active':''}">
-				<a class="page-link" href="${pageNum }">${pageNum }</a>
-			</li>
-			</c:forEach>
-			<c:if test="${p.next}">
-			<li class="page-item">
-				<a class="page-link" href="${p.endPage+1 }">다음페이지</a>
-			</li>
-			</c:if>
-		</ul>
+		
+		<c:if test="${p.endPage ne p.startPage}">
+			<div class="d-flex justify-content-center">
+				<ul class="pagination">
+					<c:choose>
+						<c:when test="${cri.page ne '1'}">
+							<li class="page-item">
+								<a class="page-link" href="${'1'}"><<</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<a class="page-link" href="javascript:void(0)"><<</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				
+					<c:choose>
+						<c:when test="${p.prev}">
+							<li class="page-item">
+								<a class="page-link" href="${p.startPage-1}"><</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<button class="page-link" href="javascript:void(0)"><</button>
+							</li>
+						</c:otherwise>
+					</c:choose>
+
+					<c:forEach begin="${p.startPage}" end="${p.endPage }" var="pageNum">
+					<li class="page-item ${cri.page == pageNum ? 'active':''}">
+						<a class="page-link" href="${pageNum }">${pageNum }</a>
+					</li>
+					</c:forEach>
+					
+					<c:choose>
+						<c:when test="${p.next}">
+							<li class="page-item">
+								<a class="page-link" href="${p.endPage+1}">></a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<button class="page-link" href="javascript:void(0)">></button>
+							</li>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+						<c:when test="${cri.page ne p.tempEndPage}">
+							<li class="page-item">
+								<a class="page-link" href="${p.tempEndPage}">>></a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item disabled">
+								<a class="page-link" href="javascript:void(0)">>></a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</div>
+		</c:if>
 		
 		<a href="${contextPath}/product/add" class="btn btn-primary">새 상품 추가</a>
 	</div>

@@ -66,13 +66,11 @@ public class HomeController {
 	
 	@GetMapping("/service")
 	public String service(Model model) {
-		log.info("서비스 안내 이동");
 		return "/main/service";
 	}
 	
 	@PostMapping("/ask")
 	public String ask(BoardVO vo, RedirectAttributes rttr) {
-		log.info("질문 등록");
 		boardService.ask(vo);
 		return "redirect:/main/ask";
 	}
@@ -116,12 +114,5 @@ public class HomeController {
 		boardService.notice(vo);
 		return "redirect:/notice";
 	}
-	
-	@GetMapping("/notice/detail")
-	public String noticeDetail(Long bno) {
-		boardService.noticeDetail(bno);
-		return "/main/noticeDetail";
-	}
-	
-	
+		
 }

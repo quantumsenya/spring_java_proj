@@ -36,14 +36,25 @@
 			</tr>
 			<tr>
 				<th>상품가격</th>
-				<td>${product.price} 원</td>
+				<td>
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}"/> 원
+				</td>
 				<th>재고수량</th>
-				<td>${product.count} 개</td>
+				<td>
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.count}"/> 개
+				</td>
 			</tr>
+				<th>재고 보유금액</th>
+				<td>
+					<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.count * product.price}"/> 원
+				</td>
 				<th>추가일자</th>
-				<td>${product.pdate}</td>
+				<td>
+					<fmt:formatDate value="${product.pdate}" pattern="yyyy년 MM월 dd일 HH:mm:ss"/>
+				</td>
 			</tr>
 		</table>
+		<button type="button" class="btn btn-primary" onclick="history.go(-1)">목록</button>
 	</div>
 </div>
 

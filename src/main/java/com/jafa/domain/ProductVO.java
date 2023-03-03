@@ -1,7 +1,6 @@
 package com.jafa.domain;
 
-import java.sql.Date;
-import java.util.List;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,5 +24,5 @@ public class ProductVO {
 	private String brand;
 	private int price;
 	private int count;
-	private Date pdate;
+	private Timestamp pdate;
 }
