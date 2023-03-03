@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jafa.domain.Criteria;
@@ -26,19 +28,22 @@ public class ProductController {
 	ProductService productService;
 	
 	@RequestMapping(value = {"/list", "/list/{category}"})
-	public String list(Model model,@PathVariable(required = false) String category,
-						@ModelAttribute("cri") Criteria criteria) {
+	public String list(@PathVariable(required = false) String category,
+						@ModelAttribute("cri") Criteria criteria, Model model) {
 		log.info(criteria);
+		criteria.setCategory(category);
 		model.addAttribute("product", productService.productList(criteria));
 		model.addAttribute("p", new Pagination(criteria, productService.getTotalCount(criteria)));
 		return "/product/list";
 	}
 	
-	@GetMapping("/detail")
-	public String detail(int pid, ProductVO vo) {
+	@RequestMapping("/detail")
+	public ModelAndView detail(@RequestParam("pid") Long pid) {
 		log.info("상품상세이지" + pid);
-		
-		return "/product/detail";
+		ModelAndView view = new ModelAndView();
+		view.setViewName("/product/detail");
+		view.addObject("product", productService.detail(pid));
+		return view;
 	}
 	
 	@GetMapping("/add")

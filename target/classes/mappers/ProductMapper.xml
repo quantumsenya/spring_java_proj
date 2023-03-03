@@ -53,4 +53,8 @@
 		values(TBL_PRODUCT_SEQ.nextval, #{category}, #{pname}, #{brand}, #{price}, #{count})
 	</insert>
 	
+	<select id="detail" resultType="com.jafa.domain.ProductVO">
+		select * from TBL_PRODUCT where pid=#{pid}
+	</select>
+	
 </mapper>

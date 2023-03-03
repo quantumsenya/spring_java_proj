@@ -14,6 +14,7 @@ public interface ProductRepository {
 	
 	void add(ProductVO vo);
 
+	ProductVO detail(Long pid);
+	
 	int getTotalCount(Criteria criteria);
-
 }

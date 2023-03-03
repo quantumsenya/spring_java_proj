@@ -12,19 +12,44 @@
 	
 	<insert id="notice">
 		insert into pro_board(bno, tag, title, content, writer) 
-		values(pro_board_seq.nextval,#{tag}, #{title}, #{content}, #{writer})
+		values(pro_board_seq.nextval, 'notice', #{title}, #{content}, #{writer})
 	</insert>
 	
 	<select id="noticeList" resultType="com.jafa.domain.BoardVO">
-		select * from pro_board where tag='notice' order by bno desc
+		<![CDATA[
+		select 
+			rn, bno, tag, title, content, writer, views, writedate
+		from
+		(SELECT 
+			/*+ index_desc(pro_board pk_pro_board) */ 
+			rownum rn, bno, tag, title, content, writer, views, writedate
+		from pro_board where rownum <= #{maxRow}
+		and tag like 'notice'
+		) where rn > #{minRow}
+		]]>
 	</select>
 	
 	<select id="noticeDetail" resultType="com.jafa.domain.BoardVO">
 		select * from pro_board where bno=#{bno}
 	</select>
 	
+	
 	<select id="askList" resultType="com.jafa.domain.BoardVO">
-		select * from pro_board where tag='ask' order by bno desc
+		<![CDATA[
+		select 
+			rn, bno, tag, title, content, writer, views, writedate
+		from
+		(SELECT 
+			/*+ index_desc(pro_board pk_pro_board) */ 
+			rownum rn, bno, tag, title, content, writer, views, writedate
+		from pro_board where rownum <= #{maxRow}
+		and tag like 'ask'
+		) where rn > #{minRow}
+		]]>
+	</select>
+	
+	<select id="askDetail" resultType="com.jafa.domain.BoardVO">
+		select * from pro_board where bno=#{bno}
 	</select>
 	
 	<select id="getTotalCount" resultType="int">

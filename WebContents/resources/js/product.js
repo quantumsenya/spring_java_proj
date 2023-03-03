@@ -41,7 +41,7 @@ $(function(){
 	$('.searchForm button').click(function(){
 		let category = $('.searchForm').find('.category').val();
 		$('.searchForm')
-			.attr('action',`${contextPath}/board/list/${category}`)
+			.attr('action',`${contextPath}/product/list/${category}`)
 			.submit();
 	})
 	

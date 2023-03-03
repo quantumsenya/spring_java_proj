@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
 <script src="${contextPath}/resources/js/product.js"></script>
-
 <input type="hidden" value="${category}" class="category">
 <div class="container">
 	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
@@ -27,8 +26,8 @@
 		<div class="form-group">
 		<select class="form-control" name="type">
 			<option value="N" >이름</option>
-			<option value="I" ${cri.type=='I' ? 'selected':''}>ID</option>
-			<option value="B" ${cri.type=='B' ? 'selected':''}>브랜드</option>
+			<option value="I" ${cri.type=='I' ? 'selected':''}>상품번호</option>
+			<option value="B" ${cri.type=='B' ? 'selected':''}>제조사</option>
 		</select>
 		</div>
 		<div class="form-group">
@@ -60,13 +59,26 @@
 						<c:forEach items="${product}" var="p">
 							<tr class="text-center">
 								<td>${p.pid }</td>
-								<td>${p.category }</td>
 								<td>
-									<a href="${contextPath}/askDetail=${p.pid}" class="pname">${p.pname}</a>
+									<c:choose>
+										<c:when test="${p.category eq 'man'}">남성</c:when>
+										<c:when test="${p.category eq 'woman'}">여성</c:when>
+										<c:when test="${p.category eq 'child'}">아동</c:when>
+										<c:when test="${p.category eq 'ACC'}">ACC</c:when>
+										<c:when test="${p.category eq 'sports'}">스포츠</c:when>
+										<c:when test="${p.category eq 'electronics'}">가전</c:when>
+										<c:when test="${p.category eq 'office'}">문구</c:when>
+										<c:when test="${p.category eq 'health'}">헬스</c:when>
+										<c:when test="${p.category eq 'office'}">etc</c:when>
+										<c:otherwise>기타</c:otherwise>
+									</c:choose>
+								</td>
+								<td>
+									<a href="${contextPath}/product/detail?pid=${p.pid}" class="pname">${p.pname}</a>
 								</td>
 								<td>${p.brand}</td>
-								<td>${p.price}</td>
-								<td>${p.count}</td>
+								<td>${p.price} 원</td>
+								<td>${p.count} 개</td>
 								<td>
 									<fmt:formatDate value="${p.pdate}" pattern="yyyy년 MM월 dd일"/>
 								</td>

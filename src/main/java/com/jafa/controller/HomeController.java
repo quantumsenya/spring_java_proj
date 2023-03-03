@@ -78,6 +78,28 @@ public class HomeController {
 	}
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
+	@RequestMapping(value = {"/askList"})
+	public String askList(@ModelAttribute("cri") Criteria criteria, Model model, Authentication auth) {
+		if(auth!=null && auth.isAuthenticated()) {
+			MemberDetail principal = (MemberDetail)  auth.getPrincipal();
+			MemberVO vo = principal.getMemberVO();
+			model.addAttribute("memberInfo", vo);
+		}
+		model.addAttribute("ask", boardService.askList(criteria));
+		model.addAttribute("p", new Pagination(criteria, boardService.getAsktotalCount(criteria)));
+		return "/main/askList";
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
+	@RequestMapping("/askDetail")
+	public ModelAndView askDetail(@RequestParam("bno") Long bno) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/main/askDetail");
+		mav.addObject("board", boardService.askDetail(bno));
+		return mav;
+	}
+	
+	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@GetMapping("noticeForm")
 	public String noticeForm(Authentication auth, Model model) {
 		log.info("공지 작성");

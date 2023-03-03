@@ -11,7 +11,7 @@ $(function() {
 		});
 		
 		form.attr('method','get')
-			.attr('action',`${contextPath}/notice`)
+			.attr('action',`${contextPath}/askList`)
 			.append(pageNumInput)
 			.appendTo('body')
 			.submit();

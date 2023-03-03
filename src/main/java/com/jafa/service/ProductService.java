@@ -29,5 +29,9 @@ public class ProductService {
 		return productRepository.getTotalCount(criteria);
 	}
 
+	public Object detail(Long pid) {
+		return productRepository.detail(pid);
+	}
+
 
 }

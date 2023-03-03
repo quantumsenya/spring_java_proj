@@ -20,7 +20,7 @@ public interface BoardRepository {
 	List<BoardVO> noticeList(Criteria criteria);
 	
 	// 질문 목록 읽어오기 (관리자)
-	List<BoardVO> askList();
+	List<BoardVO> askList(Criteria criteria);
 
 	// 공지 세부
 	BoardVO noticeDetail(Long bno);
@@ -30,4 +30,6 @@ public interface BoardRepository {
 	int getNoticeTotalCount(Criteria criteria);
 	
 	int getAskTotalCount(Criteria criteria);
+
+	BoardVO askDetail(Long bno);
 }

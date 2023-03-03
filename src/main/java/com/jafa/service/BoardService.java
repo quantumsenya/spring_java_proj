@@ -45,8 +45,8 @@ public class BoardService {
 	}
 	
 	// 질문 조회
-	public List<BoardVO> askList() {
-		return boardRepository.askList();
+	public List<BoardVO> askList(Criteria criteria) {
+		return boardRepository.askList(criteria);
 	}
 
 	public BoardVO noticeDetail(Long bno) {
@@ -63,6 +63,10 @@ public class BoardService {
 	
 	public int getAsktotalCount(Criteria criteria) {
 		return boardRepository.getAskTotalCount(criteria);
+	}
+
+	public BoardVO askDetail(Long bno) {
+		return boardRepository.askDetail(bno);
 	}
 
 }

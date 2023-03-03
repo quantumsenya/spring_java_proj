@@ -17,7 +17,7 @@
 <!-- GOOGLE FONTS LINK -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-
+<script>let contextPath = "${contextPath}"</script>
 </head>
 <body>
 
