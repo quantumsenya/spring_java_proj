@@ -54,6 +54,16 @@
 				</td>
 			</tr>
 		</table>
+		<form action="${contextPath}/product/edit" method="get">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="pid" value="${product.pid}">
+			<button class="btn btn-info">수정</button>
+		</form>
+		<form action="${contextPath}/product/delete" method="post">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<input type="hidden" name="pid" value="${product.pid}">
+			<button class="btn btn-warning">삭제</button>
+		</form>
 		<button type="button" class="btn btn-primary" onclick="history.go(-1)">목록</button>
 	</div>
 </div>

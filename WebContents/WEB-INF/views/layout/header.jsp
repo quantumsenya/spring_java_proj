@@ -60,7 +60,7 @@
 						</a>
 						<form action="${contextPath}/member/logout" method="post">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-							<a class="dropdown-item btn btn-primary">로그아웃</a>
+							<button class="dropdown-item btn btn-primary">로그아웃</button>
 						</form>
 					</sec:authorize>
 			</div>

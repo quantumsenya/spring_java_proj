@@ -57,4 +57,18 @@
 		select * from TBL_PRODUCT where pid=#{pid}
 	</select>
 	
+	
+	<update id="edit">
+		update TBL_PRODUCT set
+		CATEGORY = #{category},
+		PNAME = #{pname},
+		BRAND = #{brand},
+		PRICE = #{price},
+		COUNT = #{count}
+		where PID = #{pid}
+	</update>
+
+	<delete id="delete">
+		delete from TBL_PRODUCT where PID = #{pid}
+	</delete>
 </mapper>

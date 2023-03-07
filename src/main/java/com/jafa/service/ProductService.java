@@ -33,5 +33,13 @@ public class ProductService {
 		return productRepository.detail(pid);
 	}
 
+	public void delete(Long pid) {
+		productRepository.delete(pid);
+	}
+
+	public void edit(ProductVO vo) {
+		productRepository.edit(vo);
+	}
+
 
 }
