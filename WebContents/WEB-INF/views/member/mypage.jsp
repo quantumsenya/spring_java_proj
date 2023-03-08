@@ -3,7 +3,9 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<h2>회원 정보</h2>
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
+		<h1>회원정보</h1>
+	</div>
 	<table class="table table-hover">
 		<c:choose>
 			<c:when test="${empty memberInfo}">
@@ -14,19 +16,23 @@
 			<c:otherwise>
 				<tr>
 					<th>회원번호</th>
+					<td>${memberInfo.mno}</td>
 					<th>아이디</th>
-					<th>이메일</th>
-					<th>활성화 상태</th>
-					<th>등급</th>
+					<td>${memberInfo.memberId}</td>
 				</tr>
 				<tr>
-					<td>${memberInfo.mno}</td>
-					<td>${memberInfo.memberId}</td>
+					<th>이메일</th>
 					<td>${memberInfo.email }</td>
+					<th>활성화 상태</th>
 					<td>
 						<c:if test="${memberInfo.enabled eq false}">비활성</c:if>
 						<c:if test="${memberInfo.enabled eq true}">활성</c:if>
 					</td>
+				</tr>
+				<tr>
+					<th>등급</th>
+					<td>${memberInfo.authList[0].memberType.name}</td>
+					<th>가입일</th>
 					<td>${memberInfo.authList[0].memberType.name}</td>
 				</tr>
 			</c:otherwise>

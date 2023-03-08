@@ -1,5 +1,7 @@
 package com.jafa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -18,7 +20,9 @@ import com.jafa.domain.Criteria;
 import com.jafa.domain.MemberDetail;
 import com.jafa.domain.MemberVO;
 import com.jafa.domain.Pagination;
+import com.jafa.domain.ReplyVO;
 import com.jafa.service.BoardService;
+import com.jafa.service.ReplyService;
 
 import lombok.extern.log4j.Log4j;
 
@@ -28,6 +32,9 @@ public class HomeController {
 
 	@Autowired
 	BoardService boardService;
+	
+	@Autowired
+	ReplyService replyService;
 	
 	@GetMapping("/")
 	public String home(Model model) {
@@ -89,10 +96,16 @@ public class HomeController {
 	
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')")
 	@RequestMapping("/askDetail")
-	public ModelAndView askDetail(@RequestParam("bno") Long bno) {
+	public ModelAndView askDetail(@RequestParam("bno") Long bno, Authentication auth) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("/main/askDetail");
+		if(auth!=null && auth.isAuthenticated()) {
+			MemberDetail principal = (MemberDetail)  auth.getPrincipal();
+			MemberVO vo = principal.getMemberVO();
+			mav.addObject("memberInfo", vo);
+		}
 		mav.addObject("board", boardService.askDetail(bno));
+		mav.addObject("reply", replyService.replyList(bno));
 		return mav;
 	}
 	

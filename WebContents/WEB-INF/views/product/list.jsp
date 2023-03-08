@@ -36,7 +36,7 @@
 		<button type="button" class="btn btn-primary">검색</button>
 	</form>
 	
-		<table class="table table-striped">
+		<table class="table table-striped table-hover">
 			<thead class="thead-dark">
 				<tr class="text-center">
 					<th>상품 번호</th>

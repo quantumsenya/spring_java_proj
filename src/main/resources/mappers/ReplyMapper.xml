@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.jafa.repository.ReplyRepository">
+	
+	<!-- 댓글 조회 -->
+	<select id="replyList" resultType="com.jafa.domain.ReplyVO">
+	    select
+	        RNO, BNO, WRITER, CONTENT, REPLYDATE
+	    from PRO_REPLY
+	        where BNO = #{bno}        
+	</select>
+	
+	<!-- 댓글 작성 -->
+	<insert id="replyWrite" parameterType="com.jafa.domain.ReplyVO">
+	    insert into PRO_REPLY(RNO, BNO, WRITER, CONTENT)
+	        VALUES(PRO_REPLY_SEQ.nextval, #{bno}, #{writer}, #{content})
+	</insert>
+	    
+	<!-- 댓글 수정 -->
+	<update id="replyModify" parameterType="com.jafa.domain.ReplyVO">
+	    update PRO_REPLY set
+	        WRITER = #{writer},
+	        CONTENT = #{content}
+	    where RNO = #{rno}
+	        and BNO = #{bno}    
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="replyDelete" parameterType="com.jafa.domain.ReplyVO">
+	    delete from PRO_REPLY
+	    where RNO = #{rno}
+	        and BNO = ${bno}    
+	</delete>
+	
+</mapper>
