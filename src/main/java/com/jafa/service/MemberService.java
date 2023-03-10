@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jafa.domain.AuthVO;
+import com.jafa.domain.MemberDTO;
 import com.jafa.domain.MemberType;
 import com.jafa.domain.MemberVO;
 import com.jafa.repository.AuthRepository;
@@ -28,11 +29,11 @@ public class MemberService {
 	
 	// 회원가입
 	@Transactional
-	public void join(MemberVO vo) {
-		vo.setPassword(passwordEncoder.encode(vo.getPassword())); // 비밀번호 암호화 
-		memberRepository.save(vo);
+	public void join(MemberDTO dto) {
+		dto.setPassword(passwordEncoder.encode(dto.getPassword())); // 비밀번호 암호화 
+		memberRepository.save(dto);
 		AuthVO authVO = AuthVO.builder()
-				.memberId(vo.getMemberId())
+				.memberId(dto.getMemberId())
 				.memberType(MemberType.ROLE_ASSOCIATE_MEMBER)
 				.ordinal(MemberType.ROLE_ASSOCIATE_MEMBER.ordinal())
 				.build();

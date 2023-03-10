@@ -12,6 +12,7 @@ import com.jafa.config.RootConfig;
 import com.jafa.config.SecurityConfig;
 import com.jafa.config.ServletConfig;
 import com.jafa.domain.AuthVO;
+import com.jafa.domain.MemberDTO;
 import com.jafa.domain.MemberType;
 import com.jafa.domain.MemberVO;
 
@@ -32,7 +33,7 @@ public class MemberRepositoryTest {
 	@Test
 	@Ignore
 	public void test() {
-		MemberVO vo = MemberVO.builder()
+		MemberDTO vo = MemberDTO.builder()
 				.memberId("leekwanghyup")
 				.password("1234")
 				.email("lee@naver.com")

@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jafa.domain.AuthListDTO;
 import com.jafa.domain.AuthVO;
+import com.jafa.domain.MemberDTO;
 import com.jafa.domain.MemberDetail;
 import com.jafa.domain.MemberType;
 import com.jafa.domain.MemberVO;
@@ -72,8 +73,8 @@ public class SecurityExamController {
 	
 	//회원가입처리
 	@PostMapping("/join")
-	public String join(MemberVO vo, RedirectAttributes rttr) {
-		memberService.join(vo);
+	public String join(MemberDTO dto, RedirectAttributes rttr) {
+		memberService.join(dto);
 		return "redirect:/";
 	}
 	

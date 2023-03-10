@@ -15,13 +15,12 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MemberVO {
-	private Long mno; 
+public class MemberDTO {
 	private String memberId;
 	private String memberName;
 	private String password; 
+	private String confPassword;
 	private String email;
 	private String phoneNum;
-	private boolean enabled;
 	private List<AuthVO> authList;
 }

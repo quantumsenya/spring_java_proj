@@ -19,15 +19,6 @@
 	        VALUES(PRO_REPLY_SEQ.nextval, #{bno}, #{writer}, #{content})
 	</insert>
 	    
-	<!-- 댓글 수정 -->
-	<update id="replyModify" parameterType="com.jafa.domain.ReplyVO">
-	    update PRO_REPLY set
-	        WRITER = #{writer},
-	        CONTENT = #{content}
-	    where RNO = #{rno}
-	        and BNO = #{bno}    
-	</update>
-	
 	<!-- 댓글 삭제 -->
 	<delete id="replyDelete" parameterType="com.jafa.domain.ReplyVO">
 	    delete from PRO_REPLY

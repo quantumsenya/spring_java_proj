@@ -18,10 +18,6 @@ public class ReplyService {
 		replyRepository.replyWrite(vo);
 	}
 	
-	public void replymodify(ReplyVO vo) {
-		replyRepository.replyModify(vo);
-	}
-	
 	public List<ReplyVO> replyList(Long bno) {
 		return replyRepository.replyList(bno);
 	}

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="container">
 	<div class="jumbotron">
@@ -12,18 +14,37 @@
 				<div class="card-body">
 					<h5 class="card-title text-center">사용자 등록</h5>
 					<form action="${contextPath}/member/join" method="post">
+					<spring:hasBindErrors name="memberDTO"/>
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 						<div class="form-label-group">
-							<label>아이디: </label>
+							<label for="memberId">아이디: </label>
 							<input type="text" name="memberId" class="form-control" autofocus="autofocus" required="required" placeholder="사용하실 아이디를 입력하세요">
+							<form:errors path="memberDTO.memberId" element="div" class="input_errors" />
+						</div>
+						<div class="form-label-group">
+							<label>이름: </label>
+							<input type="text" name="memberName" class="form-control" autofocus="autofocus" required="required" placeholder="이름을 입력하세요">
+							<form:errors path="memberDTO.memberName" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>비밀번호 : </label>
 							<input type="text" name="password" class="form-control" required="required" placeholder="사용하실 비밀번호를 입력하세요">
+							<form:errors path="memberDTO.password" element="div" class="input_errors" />
+						</div>
+						<div class="form-label-group">
+							<label>비밀번호 확인 : </label>
+							<input type="text" name="confPassword" class="form-control" required="required" placeholder="비밀번호를 다시 한번 입력하세요.">
+							<form:errors path="memberDTO.confPassword" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>이메일 : </label>
-							<input type="text" name="email" class="form-control" required="required" placeholder="사용하실 이메일을 입력하세요">
+							<input type="text" name="email" class="form-control" required="required" placeholder="사용중인 이메일을 입력하세요">
+							<form:errors path="memberDTO.email" element="div" class="input_errors" />
+						</div>
+						<div class="form-label-group">
+							<label>전화번호 : </label>
+							<input type="text" name="phoneNum" class="form-control" required="required" placeholder="사용중인 전화번호를 입력하세요">
+							<form:errors path="memberDTO.phoneNum" element="div" class="input_errors" />
 						</div>
 						<hr>
 							<div class="form-label-group text-center">
@@ -42,3 +63,23 @@
 
 
 <%@ include file="../layout/footer.jsp" %>
+
+<style>
+.input_errors{
+	font-size: 13px;  
+	font-weight:bold; 
+	color:red;
+}
+.error_on {
+	border-color: red;
+}
+</style>
+<script>
+$(function(){
+	let error_form = $('.input_errors');
+	console.log(error_form.length);
+	if(error_form.length>0){
+		error_form.prev().addClass('error_on')
+	}
+})
+</script>

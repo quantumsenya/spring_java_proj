@@ -5,8 +5,8 @@
   
 <mapper namespace="com.jafa.repository.MemberRepository">
 	<insert id="save">
-		insert into pro_member(mno, memberId, password, email)
-		values(pro_member_seq.nextval,#{memberId}, #{password}, #{email})
+		insert into pro_member(MNO, MEMBERID,MEMBERNAME , PASSWORD, EMAIL, PHONENUM)
+		values(pro_member_seq.nextval,#{memberId}, #{memberName}, #{password}, #{email}, #{phoneNum})
 	</insert>
 	
 	<select id="read" resultMap="memberMap">
@@ -15,8 +15,10 @@
 	<resultMap type="com.jafa.domain.MemberVO" id="memberMap">
 		<result property="mno" column="mno"/>
 		<result property="memberId" column="memberId"/>
+		<result property="memberName" column="memberName"/>
 		<result property="password" column="password"/>
 		<result property="email" column="email"/>
+		<result property="phoneNum" column="phoneNum"/>
 		<result property="enabled" column="enabled"/>
 		<collection property="authList" 
 			column="memberId" 

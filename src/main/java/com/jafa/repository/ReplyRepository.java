@@ -11,8 +11,6 @@ public interface ReplyRepository {
 
 	void replyWrite(ReplyVO vo);
 	
-	void replyModify(ReplyVO vo);
-	
 	List<ReplyVO> replyList(Long bno);
 	
 	void replyDelete (ReplyVO vo);
