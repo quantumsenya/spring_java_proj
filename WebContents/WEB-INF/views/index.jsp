@@ -3,8 +3,8 @@
 <%@ include file="layout/header.jsp" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <div class="container">
-	<div class="jumbotron text-center">
-		<h2>메인페이지</h2>
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
+		<h1>메인페이지</h1>
 	</div>
 	<div class="row">
 		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">

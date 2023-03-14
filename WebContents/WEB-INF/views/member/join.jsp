@@ -5,8 +5,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="container">
-	<div class="jumbotron">
-		<h1>회원 가입</h1>
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
+		<h1>회원가입</h1>
 	</div>
 	<div class="row">
 		<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -18,12 +18,12 @@
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 						<div class="form-label-group">
 							<label for="memberId">아이디: </label>
-							<input type="text" name="memberId" class="form-control" autofocus="autofocus" required="required" placeholder="사용하실 아이디를 입력하세요">
+							<input type="text" name="memberId" class="form-control" value="${dto.memberId}" autofocus="autofocus" required="required" placeholder="사용하실 아이디를 입력하세요">
 							<form:errors path="memberDTO.memberId" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>이름: </label>
-							<input type="text" name="memberName" class="form-control" autofocus="autofocus" required="required" placeholder="이름을 입력하세요">
+							<input type="text" name="memberName" class="form-control" value="${dto.memberName}" autofocus="autofocus" required="required" placeholder="이름을 입력하세요">
 							<form:errors path="memberDTO.memberName" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
@@ -38,12 +38,12 @@
 						</div>
 						<div class="form-label-group">
 							<label>이메일 : </label>
-							<input type="text" name="email" class="form-control" required="required" placeholder="사용중인 이메일을 입력하세요">
+							<input type="text" name="email" class="form-control" value="${dto.email}" required="required" placeholder="사용중인 이메일을 입력하세요">
 							<form:errors path="memberDTO.email" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>전화번호 : </label>
-							<input type="text" name="phoneNum" class="form-control" required="required" placeholder="사용중인 전화번호를 입력하세요">
+							<input type="text" name="phoneNum" class="form-control" value="${dto.phoneNum}" required="required" placeholder="사용중인 전화번호를 입력하세요">
 							<form:errors path="memberDTO.phoneNum" element="div" class="input_errors" />
 						</div>
 						<hr>

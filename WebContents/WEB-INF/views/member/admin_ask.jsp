@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>관리자 페이지</h1>
 	</div>
 	

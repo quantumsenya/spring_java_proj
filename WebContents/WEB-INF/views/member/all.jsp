@@ -3,8 +3,9 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<h1>메인</h1>
-	<div>
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
+		<h1>메인페이지</h1>
+	</div>
 		<spring:message code="main.greeting" arguments="${name},${welcome}"/>
 	</div>
 </div>

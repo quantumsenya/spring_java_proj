@@ -24,13 +24,13 @@ import lombok.ToString;
 @FieldMatch(first = "password", second = "confPassword", message = "비밀번호가 일치하지 않습니다.")
 public class MemberDTO {
 	
-	@NotBlank(message = "아이디는 필수 입력 항목입니다.")
-	@Length(min = 4, max = 16, message = "아이디는 4~16자이어야 합니다.")
-	private String memberId;
-	
 	@NotBlank(message = "이름은 필수 입력 항목입니다.")
 	@Length(min = 2, max = 10, message = "이름은 2~10자이어야 합니다.")
 	private String memberName;
+
+	@NotBlank(message = "아이디는 필수 입력 항목입니다.")
+	@Length(min = 4, max = 16, message = "아이디는 4~16자이어야 합니다.")
+	private String memberId;
 	
 	@Pattern(regexp = "^.*(?=^.{8,15}$)(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$")
 	private String password; 

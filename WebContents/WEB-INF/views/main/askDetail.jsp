@@ -4,7 +4,7 @@
 
 <div class="container">
 	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
-		<h1 class="text-center">회원 문의</h1>
+		<h1>회원문의</h1>
 	</div>
 	<div class="jumbotron">
 		<h2>${board.title}</h2>

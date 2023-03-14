@@ -6,6 +6,7 @@
 	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>서비스 소개</h1>
 	</div>
+	
 	<div class="jumbotron">
 		소개함~ <br>
 		<br>

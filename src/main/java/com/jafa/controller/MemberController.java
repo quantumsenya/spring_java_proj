@@ -76,19 +76,20 @@ public class MemberController {
 	
 	//회원가입처리
 	@PostMapping("/join")
-	public String join(@Valid MemberDTO dto, Errors errors, RedirectAttributes rttr) {
+	public String join(@Valid MemberDTO dto, Errors errors, Model model, RedirectAttributes rttr) {
 		if(errors.hasErrors()) {
 			System.out.println("에러!");
+			model.addAttribute("dto", dto);
 			return "/member/join";
 		}
 		memberService.join(dto);
 		return "redirect:/";
 	}
 	
-	@InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		binder.setValidator(new MemberDTOValidator());
-	}
+//	@InitBinder
+//	protected void initBinder(WebDataBinder binder) {
+//		binder.setValidator(new MemberDTOValidator());
+//	}
 	
 	// 회원등급변경 6
 	@PreAuthorize("hasAnyRole('ROLE_REGULAR_MEMBER','ROLE_ASSOCIATE_MEMBER')")

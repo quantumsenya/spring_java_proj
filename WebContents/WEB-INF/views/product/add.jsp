@@ -3,9 +3,10 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>상품 추가</h1>
 	</div>
+	
 	<form class="form-horizontal" action="${contextPath}/product/add" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<div class="form-group">

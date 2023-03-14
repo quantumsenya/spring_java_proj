@@ -3,9 +3,10 @@
 <%@ include file="../layout/header.jsp" %>
 
 <div class="container">
-	<div class="jumbotron">
+	<div class="jumbotron text-center p-3 my-3 bg-dark text-white">
 		<h1>공지사항 등록</h1>
 	</div>
+	
 	<form action="${contextPath}/notice" method="post">
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<input type="hidden" name="tag" class="form-control" value="notice" required="required">
