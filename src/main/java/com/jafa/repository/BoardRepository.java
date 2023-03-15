@@ -32,4 +32,8 @@ public interface BoardRepository {
 	int getAskTotalCount(Criteria criteria);
 
 	BoardVO askDetail(Long bno);
+
+	void delete(Long bno);
+
+	void updateViews(Long bno);
 }

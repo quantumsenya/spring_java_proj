@@ -1,5 +1,6 @@
 package com.jafa.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -84,6 +85,26 @@ public class MemberController {
 		}
 		memberService.join(dto);
 		return "redirect:/";
+	}
+	
+	@GetMapping("/updateForm")
+	public String updateForm(Principal principal, Model model) {
+		String uid = principal.getName();
+		MemberVO vo = memberService.read(uid);
+		model.addAttribute("vo", vo);
+		
+		return "/member/updateForm";
+	}
+	
+	@PostMapping("/update")
+	public String update(@Valid MemberDTO dto, Errors errors, Model model, RedirectAttributes rttr) {
+		if(errors.hasErrors()) {
+			System.out.println("에러");
+			model.addAttribute("vo", dto);
+			return "/member/updateForm";
+		}
+		memberService.memberUpdate(dto);
+		return "redirect:/member/mypage";
 	}
 	
 //	@InitBinder

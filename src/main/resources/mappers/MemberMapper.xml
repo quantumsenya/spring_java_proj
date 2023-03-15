@@ -33,4 +33,14 @@
 	<select id="memberList" resultMap="memberMap">
 		select * from pro_member
 	</select>
+	
+	<update id="memberUpdate">
+		update pro_member set
+		memberName = #{memberName},
+		password = #{password},
+		email = #{email},
+		phoneNum = #{phoneNum}
+		where memberId = #{memberId}
+	</update>
+	
 </mapper>

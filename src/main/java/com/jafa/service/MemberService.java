@@ -2,6 +2,8 @@ package com.jafa.service;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -57,5 +59,15 @@ public class MemberService {
 	// 회원목록 조회 
 	public List<MemberVO> memberList(){
 		return memberRepository.memberList();
+	}
+
+	public MemberVO read(String uid) {
+		return memberRepository.read(uid);
+	}
+
+	@Transactional
+	public void memberUpdate(MemberDTO dto) {
+		dto.setPassword(passwordEncoder.encode(dto.getPassword())); // 비밀번호 암호화 
+		memberRepository.memberUpdate(dto);
 	}
 }

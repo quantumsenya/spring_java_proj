@@ -1,6 +1,11 @@
 package com.jafa.controller;
 
+import java.security.Principal;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -54,10 +59,47 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/noticeDetail")
-	public ModelAndView detail(@RequestParam("bno") Long bno) {
+	public ModelAndView detail(@RequestParam("bno") Long bno, Principal principal,
+								HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mav = new ModelAndView();
+//		boardService.updateViews(bno);
+		
+		Cookie oldCookie = null;
+		Cookie[] cookies = req.getCookies();
+		
+		if(cookies != null) {
+			for(Cookie cookie : cookies) {
+				log.info("cookie.getName"+cookie.getName());
+				log.info("cookie.getValue"+cookie.getValue());
+				if(cookie.getName().equals("postView")) {
+					oldCookie = cookie;
+				}
+			}
+		} 
+		
+		if (oldCookie != null) {
+			if (!oldCookie.getValue().contains("[" + bno.toString() + "]")) {
+				this.boardService.updateViews(bno);
+				oldCookie.setValue(oldCookie.getValue()+"_["+bno+"]");
+				oldCookie.setPath("/");
+				oldCookie.setMaxAge(60*60*24);
+				resp.addCookie(oldCookie);
+			}
+		} else {
+			this.boardService.updateViews(bno);
+			Cookie newCookie = new Cookie("postView", "["+bno+"]");
+			newCookie.setPath("/");
+			newCookie.setMaxAge(60*60*24);
+			resp.addCookie(newCookie);
+		}
+		
 		mav.setViewName("/main/noticeDetail");
 		mav.addObject("board", boardService.noticeDetail(bno));
+		if(principal!=null) {
+			mav.addObject("userId", principal.getName());
+			log.info(principal.getName());
+		}
+		
 		return mav;
 	}
 	
@@ -122,6 +164,12 @@ public class HomeController {
 	@PostMapping("/notice")
 	public String postNotice(BoardVO vo, RedirectAttributes rttr) {
 		boardService.notice(vo);
+		return "redirect:/notice";
+	}
+	
+	@PostMapping("/delNotice")
+	public String noticeDel(@RequestParam("bno") Long bno, Authentication auth, Model model) {
+		boardService.delete(bno);
 		return "redirect:/notice";
 	}
 		

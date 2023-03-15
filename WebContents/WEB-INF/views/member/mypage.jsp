@@ -38,6 +38,14 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
+	
+	<c:if test="${not empty memberInfo}">
+		<form action="${contextPath}/member/logout" method="post"> <!-- 기본값 : /logout -->
+			<a class="btn btn-primary" href="${contextPath}/member/updateForm">회원정보 수정</a>
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+			<button class="btn btn-danger">로그아웃</button>
+		</form>
+	</c:if>
 </div>
 
 

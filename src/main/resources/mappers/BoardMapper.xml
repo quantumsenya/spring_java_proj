@@ -64,4 +64,14 @@
 		select count(*) from pro_board where tag='ask'
 	</select>
 	
+	<delete id="delete">
+		delete from pro_board where bno=#{bno}
+	</delete>
+	
+	<update id="updateViews">
+	    UPDATE pro_board
+	  	SET views = views + 1
+	    WHERE bno=#{bno}
+	</update>
+	
 </mapper>

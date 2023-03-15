@@ -69,4 +69,12 @@ public class BoardService {
 		return boardRepository.askDetail(bno);
 	}
 
+	public void delete(Long bno) {
+		boardRepository.delete(bno);
+	}
+
+	public void updateViews(Long bno) {
+		boardRepository.updateViews(bno);
+	}
+
 }
