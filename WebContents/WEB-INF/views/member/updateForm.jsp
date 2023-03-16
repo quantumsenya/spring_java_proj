@@ -28,22 +28,22 @@
 						</div>
 						<div class="form-label-group">
 							<label>비밀번호 : </label>
-							<input type="text" name="password" class="form-control" required="required" placeholder="사용하실 비밀번호를 입력하세요">
+							<input type="password" name="password" class="form-control" required="required" placeholder="사용하실 비밀번호를 입력하세요">
 							<form:errors path="memberDTO.password" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>비밀번호 확인 : </label>
-							<input type="text" name="confPassword" class="form-control" required="required" placeholder="비밀번호를 다시 한번 입력하세요.">
+							<input type="password" name="confPassword" class="form-control" required="required" placeholder="비밀번호를 다시 한번 입력하세요.">
 							<form:errors path="memberDTO.confPassword" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>이메일 : </label>
-							<input type="text" name="email" class="form-control" value="${vo.email}" required="required" placeholder="사용중인 이메일을 입력하세요">
+							<input type="email" name="email" class="form-control" value="${vo.email}" required="required" placeholder="사용중인 이메일을 입력하세요">
 							<form:errors path="memberDTO.email" element="div" class="input_errors" />
 						</div>
 						<div class="form-label-group">
 							<label>전화번호 : </label>
-							<input type="text" name="phoneNum" class="form-control" value="${vo.phoneNum}" required="required" placeholder="사용중인 전화번호를 입력하세요">
+							<input type="number" name="phoneNum" class="form-control" value="${vo.phoneNum}" required="required" placeholder="사용중인 전화번호를 입력하세요">
 							<form:errors path="memberDTO.phoneNum" element="div" class="input_errors" />
 						</div>
 						<hr>

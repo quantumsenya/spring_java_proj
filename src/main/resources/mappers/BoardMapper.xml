@@ -34,7 +34,7 @@
 	</select>
 	
 	<select id="myAsk" resultType="com.jafa.domain.BoardVO">
-		select * from pro_board where writer=#{memberId} ORDER BY bno DESC
+		select * from pro_board where writer=#{memberId} and tag like 'ask' ORDER BY bno DESC
 	</select>
 	
 	

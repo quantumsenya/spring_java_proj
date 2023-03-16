@@ -26,11 +26,11 @@
 				<c:otherwise>
 					<c:forEach items="${ask}" var="a">
 						<tr class="text-center">
-							<td class="text-left">
+							<td style="width: 50%">
 								<a href="${contextPath}/askDetail?bno=${a.bno}" class="title">${a.title}</a>
 							</td>
-							<td>${a.writer}</td>
-							<td>
+							<td style="width: 25%">${a.writer}</td>
+							<td style="width: 25%">
 								<fmt:formatDate value="${a.writeDate}" pattern="yyyy년 MM월 dd일"/>
 							</td>
 						</tr>

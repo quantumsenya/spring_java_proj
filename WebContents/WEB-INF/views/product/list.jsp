@@ -39,14 +39,14 @@
 		<table class="table table-striped table-hover">
 			<thead class="thead-dark">
 				<tr class="text-center">
-					<th>상품 번호</th>
-					<th>상품 분류</th>
-					<th>상품 제조사</th>
-					<th>상품 이름</th>
-					<th>상품 가격</th>
-					<th>상품 재고</th>
-					<th>재고 보유금액</th>
-					<th>상품 추가일자</th>
+					<th style="width: 6%">번호</th>
+					<th style="width: 10%">분류</th>
+					<th style="width: 12%">제조사</th>
+					<th style="width: 22%">이름</th>
+					<th style="width: 10%">가격</th>
+					<th style="width: 7%">재고</th>
+					<th style="width: 15%">보유금액</th>
+					<th style="width: 18%">추가일자</th>
 				</tr>
 			</thead>
 			<tbody>
