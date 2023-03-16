@@ -34,6 +34,9 @@
 		<li class="nav-item">
 			<a class="nav-link" href="${contextPath}/member/mypage">사용자 관리</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="${contextPath}/myAsk">내 질문</a>
+		</li>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_SUB_ADMIN')">
 			<li class="nav-item">
 				<a class="nav-link" href="${contextPath}/member/admin">관리자 모드</a>

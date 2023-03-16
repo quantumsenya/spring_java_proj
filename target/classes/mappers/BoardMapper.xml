@@ -33,6 +33,10 @@
 		select * from pro_board where bno=#{bno}
 	</select>
 	
+	<select id="myAsk" resultType="com.jafa.domain.BoardVO">
+		select * from pro_board where writer=#{memberId} ORDER BY bno DESC
+	</select>
+	
 	
 	<select id="askList" resultType="com.jafa.domain.BoardVO">
 		<![CDATA[

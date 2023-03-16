@@ -36,4 +36,6 @@ public interface BoardRepository {
 	void delete(Long bno);
 
 	void updateViews(Long bno);
+
+	List<BoardVO> myAsk(String memberId);
 }

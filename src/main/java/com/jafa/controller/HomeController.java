@@ -62,7 +62,6 @@ public class HomeController {
 	public ModelAndView detail(@RequestParam("bno") Long bno, Principal principal,
 								HttpServletRequest req, HttpServletResponse resp) {
 		ModelAndView mav = new ModelAndView();
-//		boardService.updateViews(bno);
 		
 		Cookie oldCookie = null;
 		Cookie[] cookies = req.getCookies();
@@ -172,5 +171,19 @@ public class HomeController {
 		boardService.delete(bno);
 		return "redirect:/notice";
 	}
-		
+	
+	@PostMapping("/delAsk")
+	public String askDel(@RequestParam("bno") Long bno, Authentication auth, Model model) {
+		boardService.delete(bno);
+		return "redirect:/askList";
+	}
+	
+	@GetMapping("/myAsk")
+	public String myAskList(Model model, Authentication auth) {
+		MemberDetail vo = (MemberDetail) auth.getPrincipal();
+		String memberId = vo.getUsername();
+		log.info("현재 로그인 : "+memberId);
+		model.addAttribute("ask", boardService.myAsk(memberId));
+		return "/main/askList";
+	}	
 }

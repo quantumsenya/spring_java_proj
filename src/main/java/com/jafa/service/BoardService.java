@@ -77,4 +77,8 @@ public class BoardService {
 		boardRepository.updateViews(bno);
 	}
 
+	public Object myAsk(String memberId) {
+		return boardRepository.myAsk(memberId);
+	}
+
 }
