@@ -8,7 +8,7 @@
         <a href="${contextPath}/service">서비스소개</a>
     </div>
     <div style="margin-top:1rem;">
-        <h6 style="font-family: 'Lobster', cursive;">QWERTY123</h6>
+        <a href="https://github.com/star-stellar" style="font-family: 'East Sea Dokdo', cursive; color: black;"><h5>Star-Stellar</h5></a>
     </div>
 
 </div>  

@@ -23,17 +23,17 @@
 				<tr>
 					<th>이메일</th>
 					<td>${memberInfo.email }</td>
+					<th>등급</th>
+					<td>${memberInfo.authList[0].memberType.name}</td>
+				</tr>
+				<tr>
 					<th>활성화 상태</th>
 					<td>
 						<c:if test="${memberInfo.enabled eq false}">비활성</c:if>
 						<c:if test="${memberInfo.enabled eq true}">활성</c:if>
 					</td>
-				</tr>
-				<tr>
-					<th>등급</th>
-					<td>${memberInfo.authList[0].memberType.name}</td>
 					<th>가입일</th>
-					<td>${memberInfo.authList[0].memberType.name}</td>
+					<td><fmt:formatDate value="${memberInfo.joinDate}" pattern="yyyy년 MM월 dd일 HH:mm:ss"/></td>
 				</tr>
 			</c:otherwise>
 		</c:choose>

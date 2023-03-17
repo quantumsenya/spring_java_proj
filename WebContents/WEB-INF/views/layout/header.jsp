@@ -16,7 +16,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- GOOGLE FONTS LINK -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gugi&display=swap" rel="stylesheet">
 <script>let contextPath = "${contextPath}"</script>
 </head>
 <body>
@@ -26,7 +26,7 @@
   <!-- Links -->
 	<ul class="navbar-nav">
 		<li class="nav-item">
-		  	<a style="font-family: 'Lobster', cursive;" class="navbar-brand" href="${contextPath}">운영프로그램</a>
+		  	<a style="font-family: 'Gugi', cursive;" class="navbar-brand" href="${contextPath}">운영프로그램</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="${contextPath}/product/list">재고관리</a>

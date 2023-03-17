@@ -1,5 +1,6 @@
 package com.jafa.domain;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -23,5 +24,6 @@ public class MemberVO {
 	private String email;
 	private String phoneNum;
 	private boolean enabled;
+	private Timestamp joinDate;
 	private List<AuthVO> authList;
 }

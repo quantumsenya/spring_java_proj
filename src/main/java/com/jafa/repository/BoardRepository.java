@@ -21,21 +21,29 @@ public interface BoardRepository {
 	
 	// 질문 목록 읽어오기 (관리자)
 	List<BoardVO> askList(Criteria criteria);
-
+	
+	// 나의 질문목록
+	List<BoardVO> myAsk(String memberId);
+	
+	// 전체게시물 갯수
+	int getTotalCount(Criteria criteria);
+	
+	// 공지사항 게시물 갯수
+	int getNoticeTotalCount(Criteria criteria);
+	
+	// 질문 갯수
+	int getAskTotalCount(Criteria criteria);
+	
 	// 공지 세부
 	BoardVO noticeDetail(Long bno);
 
-	int getTotalCount(Criteria criteria);
-	
-	int getNoticeTotalCount(Criteria criteria);
-	
-	int getAskTotalCount(Criteria criteria);
-
+	// 질문 상세
 	BoardVO askDetail(Long bno);
 
+	// 글 삭제
 	void delete(Long bno);
 
+	// 조회수 +1
 	void updateViews(Long bno);
 
-	List<BoardVO> myAsk(String memberId);
 }
